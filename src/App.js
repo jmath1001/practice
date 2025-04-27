@@ -62,17 +62,23 @@ function App() {
   };
 
   if (step === 'welcome') {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-        <h1 className="text-4xl font-bold text-blue-600">AP Biology Quiz</h1>
-       {Object.keys(topics).map(topic => (
-  <button key={topic} onClick={() => { setSelectedTopic(topic); setStep('quiz'); }} className="mt-4 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-700 transition">
-    {topic}
-  </button>
-          Start Quiz
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+      <h1 className="text-4xl font-bold text-blue-600">AP Biology Quiz</h1>
+      <div className="mt-6 space-y-4">
+        {Object.keys(topics).map(topic => (
+          <button 
+            key={topic} 
+            onClick={() => { setSelectedTopic(topic); setStep('quiz'); }} 
+            className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-700 transition"
+          >
+            {topic}
+          </button>
+        ))}
       </div>
-    );
-  }
+    </div>
+  );
+}
 
   if (step === 'quiz') {
     const q = questions[current];
