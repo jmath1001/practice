@@ -13,6 +13,18 @@ const topics = {
     { id: 8, question: "In a food web, which trophic level has the greatest energy available?", choices: ["Primary consumers", "Secondary consumers", "Producers", "Apex predators"], correct: "Producers" },
     { id: 9, question: "Which macromolecule serves as the primary energy source for cells?", choices: ["Proteins", "Lipids", "Carbohydrates", "Nucleic acids"], correct: "Carbohydrates" },
     { id: 10, question: "What type of bond holds together the two strands of DNA?", choices: ["Covalent bonds", "Hydrogen bonds", "Ionic bonds", "Peptide bonds"], correct: "Hydrogen bonds" }
+  ],
+  "United States History": [
+    {id:11,question:"What was the main purpose of the Marshall Plan?",choices:["To rebuild European economies after World War II","To provide military support to NATO allies","To establish the United Nations","To enforce the Monroe Doctrine"],correct:"To rebuild European economies after World War II"},
+    {id:12,question:"Which U.S. President resigned due to the Watergate scandal?",choices:["Richard Nixon","Gerald Ford","Jimmy Carter","Lyndon B. Johnson"],correct:"Richard Nixon"},
+    {id:13,question:"What was the significance of the Louisiana Purchase?",choices:["It doubled the size of the United States","It ended the Revolutionary War","It was the first U.S. territory acquired from Spain","It led to the Civil War"],correct:"It doubled the size of the United States"},
+    {id:14,question:"Which battle marked the turning point of the American Civil War?",choices:["Battle of Antietam","Battle of Gettysburg","Battle of Fort Sumter","Battle of Bull Run"],correct:"Battle of Gettysburg"},
+    {id:15,question:"What was the main cause of the Spanish-American War?",choices:["The sinking of the USS Maine","Expansion of U.S. territories","Disputes over the Panama Canal","The Monroe Doctrine"],correct:"The sinking of the USS Maine"},
+    {id:16,question:"Which amendment granted women the right to vote?",choices:["15th Amendment","19th Amendment","22nd Amendment","26th Amendment"],correct:"19th Amendment"},
+    {id:17,question:"Who was the primary author of the U.S. Constitution?",choices:["James Madison","Alexander Hamilton","Benjamin Franklin","Thomas Jefferson"],correct:"James Madison"},
+    {id:18,question:"Which event triggered the Great Depression?",choices:["The Stock Market Crash of 1929","World War I","The Dust Bowl","The New Deal"],correct:"The Stock Market Crash of 1929"},
+    {id:19,question:"Which landmark Supreme Court case ended segregation in public schools?",choices:["Plessy v. Ferguson","Brown v. Board of Education","Roe v. Wade","Marbury v. Madison"],correct:"Brown v. Board of Education"},
+    {id:20,question:"Which document begins with 'We the People'?",choices:["The Declaration of Independence","The Constitution","The Gettysburg Address","The Emancipation Proclamation"],correct:"The Constitution"}
   ]
 };
 
@@ -53,7 +65,7 @@ function App() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
         <h1 className="text-4xl font-bold text-blue-600">AP Biology Quiz</h1>
-        <button 
+        <button
           onClick={() => setStep('quiz')}
           className="mt-6 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-700 transition"
         >
@@ -72,11 +84,11 @@ function App() {
         <div className="mt-4 space-y-3">
           {q.choices.map((choice, index) => (
             <label key={index} className="block cursor-pointer bg-gray-200 p-3 rounded-lg hover:bg-gray-300">
-              <input 
-                type="radio" 
-                name="answer" 
-                value={choice} 
-                checked={selectedAnswer === choice} 
+              <input
+                type="radio"
+                name="answer"
+                value={choice}
+                checked={selectedAnswer === choice}
                 onChange={() => setSelectedAnswer(choice)}
                 className="mr-2"
               />
@@ -84,9 +96,9 @@ function App() {
             </label>
           ))}
         </div>
-        <button 
-          onClick={handleAnswer} 
-          disabled={!selectedAnswer} 
+        <button
+          onClick={handleAnswer}
+          disabled={!selectedAnswer}
           className="mt-6 px-5 py-2 bg-green-500 text-white rounded-lg hover:bg-green-700 transition disabled:bg-gray-400"
         >
           Submit
@@ -102,13 +114,13 @@ function App() {
         <ul className="mt-6 space-y-3">
           {userAnswers.map((ans, idx) => (
             <li key={idx} className={`p-3 rounded-lg ${ans.isCorrect ? "bg-green-200" : "bg-red-200"}`}>
-              {ans.question} — Your answer: {ans.userInput} — 
+              {ans.question} — Your answer: {ans.userInput} —
               {ans.isCorrect ? " ✅ Correct" : ` ❌ Incorrect (Correct: ${ans.correct})`}
             </li>
           ))}
         </ul>
-        <button 
-          onClick={handleRestartQuiz} 
+        <button
+          onClick={handleRestartQuiz}
           className="mt-6 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-700 transition"
         >
           New Quiz
