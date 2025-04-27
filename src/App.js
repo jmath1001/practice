@@ -65,12 +65,11 @@ function App() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
         <h1 className="text-4xl font-bold text-blue-600">AP Biology Quiz</h1>
-        <button
-          onClick={() => setStep('quiz')}
-          className="mt-6 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-700 transition"
-        >
+       {Object.keys(topics).map(topic => (
+  <button key={topic} onClick={() => { setSelectedTopic(topic); setStep('quiz'); }} className="mt-4 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-700 transition">
+    {topic}
+  </button>
           Start Quiz
-        </button>
       </div>
     );
   }
